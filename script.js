@@ -1,5 +1,7 @@
 const characters = document.querySelectorAll('.charc-cont');
 
+const crashCymbal = new Audio('imgs/cymbal.mp3');
+
 characters.forEach((charc) => {
 
     const iframe = charc.querySelector('iframe');
@@ -12,6 +14,9 @@ characters.forEach((charc) => {
             return;
         }
         e.stopPropagation();
+
+        crashCymbal.currentTime = 0;
+        crashCymbal.play().catch(err => console.log("Audio block:", err));
 
         const isActive = charc.classList.contains('active');
 
